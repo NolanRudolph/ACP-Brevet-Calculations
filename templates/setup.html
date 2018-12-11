@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Race Setup</title>
+</head>
+<body>
+    <form action="/transfer" method="GET">
+        <p>Enter Beginning Date:</p>
+        <input type=date name="begin_date" id="begin_date" value="2017-01-01" />
+        <p>Enter Starting Time:</p>
+        <input type=time name="begin_time" id="begin_time" value="00:00"/>
+        <p>Select Total Race Distance</p>
+        <select name="total_distance" id="brevet_dist_km">
+            <option value="200">200km</option>
+            <option value="300">300km</option>
+            <option value="400">400km</option>
+            <option value="600">600km</option>
+            <option value="1000">1000km</option>
+        </select>
+        <p></p>
+        <button id="myBtn">Submit Race Parameters</button>
+    </form>
+
+    <form action="logout" methods="GET">
+        <button>Logout</button>
+    </form>
+</body>
+</html>

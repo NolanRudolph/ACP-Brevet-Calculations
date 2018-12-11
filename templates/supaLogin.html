@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-style: italic;
+            font-size: 4em;
+            color: black;
+        }
+
+        p {
+            color: black;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        button {
+            height: 50px;
+            width: 100px;
+        }
+
+        div {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Welcome Back!</h1>
+    <div>
+        <br><br><br><br><br>
+        <form action="/web_check_auth" method="POST">
+            <p>Enter Your Username: </p>
+            <input type="text" name="username" id="username">
+            <p>Enter Your Password: </p>
+            <input type="text" name="password" id="password">
+            <br>
+            <input type="checkbox" id="rem" name="rem" value="True">Remember Me?
+            <br><br><br>
+            <button>Login</button>
+        </form>
+
+    </div>
+</body>
+</html>

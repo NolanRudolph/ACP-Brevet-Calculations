@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login/Register</title>
+    <style>
+        div{
+            width:850px;
+            height: 600px;
+            margin-left:auto;
+            margin-right:auto;
+            padding: 15px;
+            background: rgba(1, 1, 1, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-style: italic;
+            font-size: 4em;
+            color: black;
+        }
+
+        p {
+            color: white;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        button {
+            height: 50px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, biker.</h1>
+    <div>
+        <br><br><br><br><br>
+        <p>Have you signed up yet?</p>
+
+        <form action="/web_register" method="GET">
+            <button>Register</button>
+        </form>
+
+        <br><br><br>
+        <p>Already a Member?</p>
+        <form action="/supaLogin">
+            <button>Login</button>
+        </form>
+
+
+    </div>
+</body>
+</html>

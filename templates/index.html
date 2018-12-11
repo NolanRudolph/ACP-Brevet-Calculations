@@ -1,0 +1,80 @@
+<html>
+<head>
+  <title>ACP - Submit Times</title>
+</head>
+<body>
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+</script>
+<script src="https://unpkg.com/moment"></script>
+
+    <form action="/new" method="POST">
+        <p id="begin_date">Begin Date: {{ session.begin_date }}</p>
+        <p id="begin_time">Begin Time: {{ session.begin_time }}</p>
+        <p id="total_distance">Total Distance: {{ session.total_distance }}</p>
+        <p>Name / Description / Distance (km):
+            <input type="text" name="name">
+            <input type="text" name="description">
+            <input id="steven" type="text" name="distance">
+        </p>
+        <p id="open">Opening Time: </p>
+        <p id="close">Closing Time: </p>
+        <style>
+            #hide{
+                display: none;
+            }
+        </style>
+        <input id="hide" type="submit">
+    </form>
+    <form action="logout" methods="GET">
+        <button>Logout</button>
+    </form>
+
+    <br>
+
+<script type="text/javascript">
+    $("#steven").change(function() {
+        let begin_date = document.getElementById("begin_date").innerHTML.substring(12,23);
+        let begin_time = document.getElementById("begin_time").innerHTML.substring(12,17);
+        let date = begin_date + "T" + begin_time;
+        let dist_n = document.getElementById("total_distance").innerHTML.length;
+        let total_dist = document.getElementById("total_distance").innerHTML.substring(16,dist_n);
+        let km = $("#steven").val();
+        console.log(km)
+
+        $.getJSON("/_calc_times", { km: km, date: date, distance: total_dist},
+            function(data) {
+                if (parseInt(km) > parseInt(total_dist)){
+                    console.log("km is " + km);
+                    console.log("total_dist is " + total_dist);
+                    $("#open").html("Outside of Total Distance!");
+                    $("#close").html("Outside of Total Distance!");
+                }
+                else{
+                    let times = data.result;
+                    let open = times.open.substring(0,16);
+                    let close = times.close.substring(0,16);
+                    let open_ret = moment(open).format("ddd M/D HH:mm");
+                    let close_ret = moment(close).format("ddd M/D HH:mm");
+                    let sub_but = document.getElementById("hide");
+                    console.log(open_ret);
+                    console.log(close_ret);
+                    sub_but.style.display = "block";
+                    $("#open").html("Opening Time: " + open_ret);
+                    $("#close").html("Closing Time: " + close_ret);
+                }
+            }
+        );
+    });
+
+    $("#hide").addEventListener("click", function(){
+        var x = document.getElementById("hide");
+        x.style.dispay = "none";
+    });
+</script>
+
+</body>
+</html>
